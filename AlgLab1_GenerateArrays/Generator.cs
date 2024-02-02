@@ -8,6 +8,21 @@ namespace AlgLab1_GenerateArrays
 {
     internal static class Generator
     {
+        static void GetRandSequence(int[] arr, int len) 
+        {
 
+        }
+
+        static void GetSortedSequence()
+        {
+
+        }
+
+        static void GetPartiallySortedSequence()
+        {
+
+        }
+
+        
     }
 }
