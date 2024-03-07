@@ -10,7 +10,7 @@ namespace GenerateSequence
 {
     internal static class Generator
     {
-        public static void GetRandSequence(Sequence sequence, int minValue=0, int maxValue=100) 
+        public static void GetUnorderedSequence(Sequence sequence, int minValue=0, int maxValue=100) 
         {
             Random rnd = new Random();
             for (int i = 0; i < sequence.len; i++)

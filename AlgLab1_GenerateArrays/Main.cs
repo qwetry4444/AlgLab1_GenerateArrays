@@ -10,19 +10,12 @@ namespace GenerateSequence
     {
         static void Main(string[] args)
         {
-            int[] sizes = { 10000000 };
+            int[] sizes = { (int)5e5, (int)10e5, (int)15e5, (int)20e5, (int)25e5, (int)30e5, (int)35e5, (int)40e5, (int)45e5, (int)50e5 };
 
-            foreach (int size in sizes)
-            {
-                Sequence arr = new Sequence(size, 0);
+            PerformanceAnalysis.GetGenerateTimes(sizes, SequenceType.PartOrdered);
 
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                Generator.GetRandSequence(arr);
-                stopwatch.Stop();
 
-                Console.WriteLine($"Sequence size: {size}, Elapsed time: {stopwatch.ElapsedMilliseconds} ms");
-            }
+
         }
     }
 }

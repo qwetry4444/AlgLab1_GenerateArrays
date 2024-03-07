@@ -14,8 +14,8 @@ namespace GenerateSequence
 
     public enum SequenceType
     {
-        Sorted,
-        PartSorted,
-        UnSorted, 
+        Ordered,
+        PartOrdered,
+        UnOrdered, 
     }
 }
