@@ -13,7 +13,7 @@ namespace GenerateSequence
         {
             foreach (int size in sizes)
             {
-                Sequence arr = new Sequence(size, 0);
+                Sequence arr = new Sequence(size, sequenceType);
 
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
@@ -22,13 +22,21 @@ namespace GenerateSequence
                     case SequenceType.Ordered:
                         Generator.GetOrderedSequence(arr, direction: direction);
                         break;
-
-                    case SequenceType.PartOrdered:
-                        Generator.GetPartiallyOrderedSequence(arr, partLen: 3, direction: direction);
-                        break;
-
                     case SequenceType.UnOrdered:
                         Generator.GetUnorderedSequence(arr);
+                        break;
+
+                    case SequenceType.Sawtooth:
+                        Generator.GetSawtoothSequence(arr, partLen: 3, direction: direction);
+                        break;
+                    case SequenceType.Sinusoidal:
+                        Generator.GetSinusoidalSequence(arr, partLen: 3);
+                        break;
+                    case SequenceType.Step:
+                        Generator.GetStepSequence(arr, partLen: 3, direction: direction);
+                        break;
+                    case SequenceType.Quasi:
+                        Generator.GetQuasiSequence(arr, direction: direction);
                         break;
                 }
                 stopwatch.Stop();

@@ -15,7 +15,10 @@ namespace GenerateSequence
     public enum SequenceType
     {
         Ordered,
-        PartOrdered,
-        UnOrdered, 
+        UnOrdered,
+        Sawtooth,
+        Sinusoidal,
+        Step,
+        Quasi,
     }
 }

@@ -12,7 +12,7 @@ namespace GenerateSequence
     {
         public int len;
         public int[] data;
-        public SequenceType arrType;
+        public SequenceType seqType;
 
         public Sequence()
         {
@@ -20,7 +20,7 @@ namespace GenerateSequence
             data = new int[len];
             GetSeqType();
 
-            switch (arrType)
+            switch (seqType)
             {
                 case SequenceType.UnOrdered:
                     Generator.GetUnorderedSequence(this);
@@ -28,29 +28,47 @@ namespace GenerateSequence
                 case SequenceType.Ordered:
                     Generator.GetOrderedSequence(this);
                     break;
-                case SequenceType.PartOrdered:
-                    Generator.GetPartiallyOrderedSequence(this);
+                case SequenceType.Sawtooth:
+                    Generator.GetSawtoothSequence(this);
+                    break;
+                case SequenceType.Sinusoidal:
+                    Generator.GetSinusoidalSequence(this);
+                    break;
+                case SequenceType.Step:
+                    Generator.GetStepSequence(this);
+                    break;
+                case SequenceType.Quasi:
+                    Generator.GetQuasiSequence(this);
                     break;
             }
         }
 
-        public Sequence(int len, SequenceType arrType)
+        public Sequence(int len, SequenceType seqType)
         {
             this.len = len;
             data = new int[len];
-            this.arrType = arrType;
-            switch (arrType)
-            {
-                case SequenceType.UnOrdered:
-                    Generator.GetUnorderedSequence(this);
-                    break;
-                case SequenceType.Ordered:
-                    Generator.GetOrderedSequence(this);
-                    break;
-                case SequenceType.PartOrdered:
-                    Generator.GetPartiallyOrderedSequence(this);
-                    break;
-            }
+            this.seqType = seqType;
+            //switch (seqType)
+            //{
+            //    case SequenceType.UnOrdered:
+            //        Generator.GetUnorderedSequence(this);
+            //        break;
+            //    case SequenceType.Ordered:
+            //        Generator.GetOrderedSequence(this);
+            //        break;
+            //    case SequenceType.Sawtooth:
+            //        Generator.GetSawtoothSequence(this);
+            //        break;
+            //    case SequenceType.Sinusoidal:
+            //        Generator.GetSinusoidalSequence(this);
+            //        break;
+            //    case SequenceType.Step:
+            //        Generator.GetStepSequence(this);
+            //        break;
+            //    case SequenceType.Quasi:
+            //        Generator.GetQuasiSequence(this);
+            //        break;
+            //}
         }
 
         public void GetLenSeq()
@@ -61,9 +79,9 @@ namespace GenerateSequence
 
         public void GetSeqType()
         {
-            Console.WriteLine("Выберите тип последовательности:\n 1 - Упорядоченная\n 2 - Частично упорядоченная\n 3 - Случайная");
+            Console.WriteLine("Выберите тип последовательности:\n 1 - Упорядоченная\n 2 - Случайная\n 3 - Пилообразная\n 4 - Синусоидальная\n 5 - Ступенчатая\n 6 - Квази-упорядоченная");
             Console.Write("Тип: ");
-            arrType = (SequenceType)(Convert.ToInt32(Console.ReadLine()) - 1);
+            seqType = (SequenceType)(Convert.ToInt32(Console.ReadLine()) - 1);
         }
 
         public void Print()
