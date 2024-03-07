@@ -9,8 +9,7 @@ namespace GenerateSequence
 {
     public static class PerformanceAnalysis
     {
-      
-        public static void GetGenerateTimes(int[] sizes, SequenceType sequenceType)
+        public static void GetGenerateTimes(int[] sizes, SequenceType sequenceType, Direction direction = Direction.increasing)
         {
             foreach (int size in sizes)
             {
@@ -21,22 +20,21 @@ namespace GenerateSequence
                 switch(sequenceType)
                 {
                     case SequenceType.Ordered:
-                        Generator.GetOrderedSequence(arr);
+                        Generator.GetOrderedSequence(arr, direction: direction);
                         break;
 
                     case SequenceType.PartOrdered:
-                        Generator.GetPartiallyOrderedSequence(arr, 3);
+                        Generator.GetPartiallyOrderedSequence(arr, partLen: 3, direction: direction);
                         break;
 
                     case SequenceType.UnOrdered:
-                        Generator.GetUnorderedSequence(arr, 3);
+                        Generator.GetUnorderedSequence(arr);
                         break;
                 }
                 stopwatch.Stop();
                 Console.WriteLine($"Sequence size: {size}, Elapsed time: {stopwatch.ElapsedMilliseconds} ms");
             }
-
+            Console.WriteLine();
         }
-
     }
 }

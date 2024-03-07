@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GenerateSequence
 {
-    internal static class Generator
+    public static class Generator
     {
         public static void GetUnorderedSequence(Sequence sequence, int minValue=0, int maxValue=100) 
         {
@@ -63,7 +63,7 @@ namespace GenerateSequence
                     {
                         for (int i = partLen; i > 0; i--)
                         {
-                            sequence.data[partNumber * partLen - i] = i;
+                            sequence.data[partNumber * partLen + partLen - i] = i;
                         }
                     }
                     break;
