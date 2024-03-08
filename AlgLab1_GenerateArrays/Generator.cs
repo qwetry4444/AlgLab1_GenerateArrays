@@ -77,7 +77,7 @@ namespace GenerateSequence
             {
                 for (int i = 0; i < partLen; i++)
                 {
-                    sequence.data[partNumber * partLen + i] = Convert.ToInt32(Math.Abs(Math.Sin((double)i / partLen * Math.PI - Math.PI / 2)) * maxValue);
+                    sequence.data[partNumber * partLen + i] = minValue + Convert.ToInt32(Math.Abs(Math.Sin((double)i / partLen * Math.PI - Math.PI / 2)) * (maxValue - minValue));
                 }
             }
         }

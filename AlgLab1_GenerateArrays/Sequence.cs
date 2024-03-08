@@ -48,27 +48,6 @@ namespace GenerateSequence
             this.len = len;
             data = new int[len];
             this.seqType = seqType;
-            //switch (seqType)
-            //{
-            //    case SequenceType.UnOrdered:
-            //        Generator.GetUnorderedSequence(this);
-            //        break;
-            //    case SequenceType.Ordered:
-            //        Generator.GetOrderedSequence(this);
-            //        break;
-            //    case SequenceType.Sawtooth:
-            //        Generator.GetSawtoothSequence(this);
-            //        break;
-            //    case SequenceType.Sinusoidal:
-            //        Generator.GetSinusoidalSequence(this);
-            //        break;
-            //    case SequenceType.Step:
-            //        Generator.GetStepSequence(this);
-            //        break;
-            //    case SequenceType.Quasi:
-            //        Generator.GetQuasiSequence(this);
-            //        break;
-            //}
         }
 
         public void GetLenSeq()
