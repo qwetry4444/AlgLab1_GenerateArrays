@@ -105,7 +105,6 @@ namespace GenerateSequence
                         }
                         break;
                     }
-
                 case Direction.decreasing:
                     {
                         for (int partNumber = countPart; partNumber > 0; partNumber--)
