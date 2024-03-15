@@ -245,7 +245,7 @@ namespace GenerateSequence
                     }
             }
         }
-
+        
         public static void GetQuasiSequence(Sequence<double> sequence, double minValue = 0, double maxValue = 100, Direction direction = Direction.increasing)
         {
             GetOrderedSequence(sequence, minValue, maxValue, direction);
