@@ -8,58 +8,38 @@ using System.Threading.Tasks;
 
 namespace GenerateSequence
 {
-    public class Sequence
+    public class Sequence<T> where T : struct
     {
         public int len;
-        public int[] data;
+        public T[] data;
         public SequenceType seqType;
 
         public Sequence()
         {
             GetLenSeq();
-            data = new int[len];
+            data = new T[len];
             GetSeqType();
-
-            switch (seqType)
-            {
-                case SequenceType.UnOrdered:
-                    Generator.GetUnorderedSequence(this);
-                    break;
-                case SequenceType.Ordered:
-                    Generator.GetOrderedSequence(this);
-                    break;
-                case SequenceType.Sawtooth:
-                    Generator.GetSawtoothSequence(this);
-                    break;
-                case SequenceType.Sinusoidal:
-                    Generator.GetSinusoidalSequence(this);
-                    break;
-                case SequenceType.Step:
-                    Generator.GetStepSequence(this);
-                    break;
-                case SequenceType.Quasi:
-                    Generator.GetQuasiSequence(this);
-                    break;
-            }
         }
 
         public Sequence(int len, SequenceType seqType)
         {
             this.len = len;
-            data = new int[len];
+            data = new T[len];
             this.seqType = seqType;
         }
 
+  
         public void GetLenSeq()
         {
-            Console.Write("Введите длину последовательности: ");
+            Console.Write("Enter the length of the sequence: ");
             len = Convert.ToInt32(Console.ReadLine());
         }
 
+
         public void GetSeqType()
         {
-            Console.WriteLine("Выберите тип последовательности:\n 1 - Упорядоченная\n 2 - Случайная\n 3 - Пилообразная\n 4 - Синусоидальная\n 5 - Ступенчатая\n 6 - Квази-упорядоченная");
-            Console.Write("Тип: ");
+            Console.WriteLine("Choose the sequence type:\n 1 - Ordered\n 2 - Unordered\n 3 - Sawtooth\n 4 - Sinusoidal\n 5 - Step\n 6 - Quasi");
+            Console.Write("Type: ");
             seqType = (SequenceType)(Convert.ToInt32(Console.ReadLine()) - 1);
         }
 
@@ -67,7 +47,7 @@ namespace GenerateSequence
         {
             Console.WriteLine("Sequence: ");
             Console.Write("[");
-            Console.Write(String.Join(", ", data));
+            Console.Write(string.Join(", ", data));
             Console.WriteLine("]");
         }
     }

@@ -13,30 +13,30 @@ namespace GenerateSequence
         {
             foreach (int size in sizes)
             {
-                Sequence arr = new Sequence(size, sequenceType);
+                Sequence<double> seq = new Sequence<double>(size, sequenceType);
 
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
                 switch(sequenceType)
                 {
                     case SequenceType.Ordered:
-                        Generator.GetOrderedSequence(arr, direction: direction);
+                        Generator.GetOrderedSequence(seq, direction: direction);
                         break;
                     case SequenceType.UnOrdered:
-                        Generator.GetUnorderedSequence(arr);
+                        Generator.GetUnorderedSequence(seq);
                         break;
 
                     case SequenceType.Sawtooth:
-                        Generator.GetSawtoothSequence(arr, partLen: 3, direction: direction);
+                        Generator.GetSawtoothSequence(seq, partLen: 3, direction: direction);
                         break;
                     case SequenceType.Sinusoidal:
-                        Generator.GetSinusoidalSequence(arr, partLen: 3);
+                        Generator.GetSinusoidalSequence(seq, partLen: 3);
                         break;
                     case SequenceType.Step:
-                        Generator.GetStepSequence(arr, partLen: 3, direction: direction);
+                        Generator.GetStepSequence(seq, partLen: 3, direction: direction);
                         break;
                     case SequenceType.Quasi:
-                        Generator.GetQuasiSequence(arr, direction: direction);
+                        Generator.GetQuasiSequence(seq, direction: direction);
                         break;
                 }
                 stopwatch.Stop();
