@@ -21,4 +21,12 @@ namespace GenerateSequence
         Step,
         Quasi,
     }
+
+    public enum SortType
+    {
+        Insertion,
+        Counting,
+        QuickWithMedian,
+        ModifiedInsertion,
+    }
 }

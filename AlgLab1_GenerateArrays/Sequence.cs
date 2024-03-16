@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GenerateSequence
 {
-    public class Sequence<T> where T : struct
+    public class Sequence<T> where T : struct, IComparable<T>
     {
         public int len;
         public T[] data;
@@ -28,8 +28,21 @@ namespace GenerateSequence
             this.seqType = seqType;
         }
 
-  
-        public void GetLenSeq()
+        public bool IsOrdered()
+        {
+            if (len <= 1)
+                return true;
+
+            for (int i = 1; i < len; i++)
+            {
+                if (data[i].CompareTo(data[i - 1]) < 0)
+                    return false;
+            }
+            return true; 
+        }
+ 
+
+    public void GetLenSeq()
         {
             Console.Write("Enter the length of the sequence: ");
             len = Convert.ToInt32(Console.ReadLine());
