@@ -36,7 +36,7 @@ namespace GenerateSequence
                     {
                         for (int i = sequence.len - 1; i >= 0; i--)
                         {
-                            sequence.data[i] = (maxValue - i < minValue) ? minValue : maxValue - i;
+                            sequence.data[sequence.len - i - 1] = (maxValue - i < minValue) ? minValue : maxValue - i;
                         }
                         break;
                     }
@@ -86,7 +86,7 @@ namespace GenerateSequence
         public static void GetStepSequence(Sequence<int> sequence, int partLen = 1, int minValue = 0, int maxValue = 100, Direction direction = Direction.increasing)
         {
             int countPart = sequence.len / partLen;
-            double step = (maxValue - minValue) / countPart;
+            double step = 1 + (maxValue - minValue) / countPart;
             Random rnd = new Random();
 
             int tmp;
@@ -99,11 +99,12 @@ namespace GenerateSequence
                         {
                             for (int i = 0; i < partLen; i++)
                             {
-                                tmp = (int)((partNumber + 1) * step + rnd.Next((int)(-step / 5), (int)(step / 5)));
+                                tmp = (int)((partNumber + 1) * step + rnd.Next((int)(-1 + -step / 5), (int)(1 + step / 5)));
                                 if (tmp > maxValue) tmp = maxValue;
-                                sequence.data[i] = tmp;
+                                sequence.data[partNumber * partLen + i] = tmp;
                             }
                         }
+
                         break;
                     }
 
