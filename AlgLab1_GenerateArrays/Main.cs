@@ -11,25 +11,25 @@ namespace GenerateSequence
         static void Main(string[] args)
         {
             
-            int[] sizes = { (int)10e5, (int)15e5, (int)20e5, (int)25e5, (int)30e5, (int)35e5, (int)40e5, (int)45e5, (int)50e5 };
+            int[] sizes = { (int)10e3, (int)15e3, (int)20e3, (int)25e3, (int)30e3, (int)35e3, (int)40e3, (int)45e3, (int)50e3 };
             //int[] sizes = { 500 };
 
-            //Console.WriteLine("Sort Insertion:");
-            //Console.WriteLine("Sort Unordered sequence:");
-            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.UnOrdered, SortType.Insertion);
-            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.UnOrdered, SortType.Insertion);
+            Console.WriteLine("Sort Insertion:");
+            Console.WriteLine("Sort Unordered sequence:");
+            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.UnOrdered, SortType.Insertion);
+            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.UnOrdered, SortType.Insertion);
 
-            //Console.WriteLine("Sort Ordered sequence:");
-            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.decreasing);
-            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.decreasing);
+            Console.WriteLine("Sort Ordered sequence:");
+            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.decreasing);
+            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.decreasing);
 
-            //Console.WriteLine("Sort Ordered decreasing sequence:");
-            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.increasing);
-            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.increasing);
+            Console.WriteLine("Sort Ordered decreasing sequence:");
+            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.increasing);
+            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Insertion, direction: Direction.increasing);
 
-            //Console.WriteLine("Sort Step sequence:");
-            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Step, SortType.Insertion);
-            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Step, SortType.Insertion);
+            Console.WriteLine("Sort Step sequence:");
+            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Step, SortType.Insertion);
+            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Step, SortType.Insertion);
 
             //Console.WriteLine("Sort ModifiedInsertion:");
             //Console.WriteLine("Sort Unordered sequence:");
@@ -48,22 +48,22 @@ namespace GenerateSequence
             //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Step, SortType.ModifiedInsertion);
             //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Step, SortType.ModifiedInsertion);
 
-            Console.WriteLine("Sort Counting:");
-            Console.WriteLine("Sort Unordered sequence:");
-            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.UnOrdered, SortType.Counting);
-            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.UnOrdered, SortType.Counting);
+            //Console.WriteLine("Sort Counting:");
+            //Console.WriteLine("Sort Unordered sequence:");
+            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.UnOrdered, SortType.Counting);
+            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.UnOrdered, SortType.Counting);
 
-            Console.WriteLine("Sort Ordered sequence:");
-            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.decreasing);
-            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.decreasing);
+            //Console.WriteLine("Sort Ordered sequence:");
+            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.decreasing);
+            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.decreasing);
 
-            Console.WriteLine("Sort Ordered decreasing sequence:");
-            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.increasing);
-            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.increasing);
+            //Console.WriteLine("Sort Ordered decreasing sequence:");
+            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.increasing);
+            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Ordered, SortType.Counting, direction: Direction.increasing);
 
-            Console.WriteLine("Sort Step sequence:");
-            PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Step, SortType.Counting);
-            PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Step, SortType.Counting);
+            //Console.WriteLine("Sort Step sequence:");
+            //PerformanceAnalysis.GetSortTimes(sizes, SequenceType.Step, SortType.Counting);
+            //PerformanceAnalysis.GetCountsComparisons<int>(sizes, SequenceType.Step, SortType.Counting);
 
 
 

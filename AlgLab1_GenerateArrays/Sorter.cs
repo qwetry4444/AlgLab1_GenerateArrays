@@ -17,7 +17,7 @@ namespace GenerateSequence
                 T key = sequence.data[i];
                 int j = i - 1;
 
-                while (j >= 0 && comparer.Compare(sequence.data[j], key) > 0)
+                while (comparer.Compare((T)(object)j, (T)(object)0) >= 0 && comparer.Compare(sequence.data[j], key) > 0)
                 {
                     sequence.data[j + 1] = sequence.data[j];
                     j--;
@@ -26,7 +26,7 @@ namespace GenerateSequence
                 sequence.data[j + 1] = key;
             }
         }
-
+        //
         // Метод для сортировки подсчётом
         public static void CountingSort<T>(Sequence<T> sequence, SortingCountingComparer<T> comparer, int minValue = 0, int maxValue = 100) where T : struct, IComparable<T>
         {
