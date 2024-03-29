@@ -10,7 +10,7 @@ namespace GenerateSequence
     public static class Sorter
     {
         // Метод для сортировки вставками
-        public static void InsertionSort<T>(Sequence<T> sequence, SortingCountingComparer<T> comparer, int minValue = 0, int maxValue = 100) where T : struct, IComparable<T>
+        public static void InsertionSort<T>(Sequence<T> sequence, CountingComparer<T> comparer, int minValue = 0, int maxValue = 100) where T : struct, IComparable<T>
         {
             for (int i = 1; i < sequence.len; i++)
             {
@@ -28,7 +28,7 @@ namespace GenerateSequence
         }
         //
         // Метод для сортировки подсчётом
-        public static void CountingSort<T>(Sequence<T> sequence, SortingCountingComparer<T> comparer, int minValue = 0, int maxValue = 100) where T : struct, IComparable<T>
+        public static void CountingSort<T>(Sequence<T> sequence, CountingComparer<T> comparer, int minValue = 0, int maxValue = 100) where T : struct, IComparable<T>
         {
             int[] counts = new int[maxValue - minValue + 1];
 
@@ -47,7 +47,7 @@ namespace GenerateSequence
             }
         }
 
-        public static void QuickSortWithMedian<T>(Sequence<T> sequence, SortingCountingComparer<T> comparer) where T : struct, IComparable<T>
+        public static void QuickSortWithMedian<T>(Sequence<T> sequence, CountingComparer<T> comparer) where T : struct, IComparable<T>
         {
             if (sequence == null || sequence.data == null || sequence.len <= 1)
                 return;
@@ -55,7 +55,7 @@ namespace GenerateSequence
             QuickSortWithMedian(sequence.data, 0, sequence.len - 1, comparer);
         }
 
-        private static void QuickSortWithMedian<T>(T[] array, int left, int right, SortingCountingComparer<T> comparer) where T : IComparable<T>
+        private static void QuickSortWithMedian<T>(T[] array, int left, int right, CountingComparer<T> comparer) where T : IComparable<T>
         {
             if (left < right)
             {
@@ -66,7 +66,7 @@ namespace GenerateSequence
             }
         }
 
-        private static T MedianOfThree<T>(T[] array, int left, int right, SortingCountingComparer<T> comparer) where T : IComparable<T>
+        private static T MedianOfThree<T>(T[] array, int left, int right, CountingComparer<T> comparer) where T : IComparable<T>
         {
             int mid = (left + right) / 2;
             if (comparer.Compare(array[left], array[mid]) > 0)
@@ -78,7 +78,7 @@ namespace GenerateSequence
             return array[mid];
         }
 
-        private static int Partition<T>(T[] array, int left, int right, T pivot, SortingCountingComparer<T> comparer) where T : IComparable<T>
+        private static int Partition<T>(T[] array, int left, int right, T pivot, CountingComparer<T> comparer) where T : IComparable<T>
         {
             int i = left - 1;
             int j = right + 1;
@@ -110,7 +110,7 @@ namespace GenerateSequence
         }
 
 
-        public static void ModifiedInsertionSort<T>(Sequence<T> sequence, SortingCountingComparer<T> comparer, int minValue = 0, int maxValue = 100) where T : struct, IComparable<T>
+        public static void ModifiedInsertionSort<T>(Sequence<T> sequence, CountingComparer<T> comparer, int minValue = 0, int maxValue = 100) where T : struct, IComparable<T>
         {
             if (sequence.data == null || sequence.len <= 1)
                 return;

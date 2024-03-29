@@ -29,4 +29,12 @@ namespace GenerateSequence
         QuickWithMedian,
         ModifiedInsertion,
     }
+
+    public enum SearchType
+    {
+        LinerSearch,
+        BinarySearch,
+        JumpSearch,
+        JumpSearchTwoLevel,
+    }
 }

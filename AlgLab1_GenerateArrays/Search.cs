@@ -3,70 +3,108 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GenerateSequence.PerformanceAnalysis;
 
 namespace GenerateSequence
 {
     public static class Search
     {
-        public static int SequentialSearch(T[] array, T target)
+        public static int LinerSearch<T>(Sequence<T> seq, T target, CountingComparer<T> comparer) where T : struct, IComparable<T>
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < seq.len; i++)
             {
-                if (array[i].Equals(target))
-                    return i; // Возвращаем индекс найденного элемента
+                if (comparer.Compare(seq.data[i], target) == 0)
+                    return i;
             }
-            return -1; // Элемент не найден
+            return -1; 
         }
 
-        public static int JumpSearch(T[] array, T target, int jumpSize)
+        public static int JumpSearch<T>(Sequence<T> seq, T target, int jumpSize, CountingComparer<T> comparer) where T : struct, IComparable<T>
         {
-            int n = array.Length;
+            int n = seq.len;
             int step = jumpSize;
-
-            // Найти блок, в котором может находиться целевой элемент
             int prev = 0;
-            while (array[Math.Min(step, n) - 1].CompareTo(target) < 0)
+
+            while (comparer.Compare(seq.data[Math.Min(step, n) - 1], target) < 0)
             {
                 prev = step;
                 step += jumpSize;
                 if (prev >= n)
-                    return -1; // Элемент не найден
+                    return -1;
             }
 
-            // Выполнить линейный поиск в найденном блоке
-            while (array[prev].CompareTo(target) < 0)
+
+            while (comparer.Compare(seq.data[prev], target) < 0)
             {
                 prev++;
                 if (prev == Math.Min(step, n))
-                    return -1; // Элемент не найден
+                    return -1; 
             }
 
-            // Если целевой элемент найден, вернуть его индекс
-            if (array[prev].Equals(target))
+
+            if (comparer.Compare(seq.data[prev], target) == 0)
                 return prev;
 
-            return -1; // Элемент не найден
+            return -1;
         }
 
-        public static int BinarySearch(T[] array, T target)
+
+        public static int JumpSearchTwoLevel<T>(Sequence<T> seq, T target, int jumpSize, CountingComparer<T> comparer) where T : struct, IComparable<T>
+        {
+            int n = seq.len;
+            int step = jumpSize;
+            int prev = 0;
+
+            while (comparer.Compare(seq.data[Math.Min(step, n) - 1], target) < 0)
+            {
+                prev = step;
+                step += jumpSize;
+                if (prev >= n)
+                    return -1;
+            }
+            
+            jumpSize = (int)Math.Sqrt(jumpSize);
+
+            while (comparer.Compare(seq.data[Math.Max(step, 1) - 1], target) >= 0)
+            {
+                prev = step;
+                step -= jumpSize;
+                if (prev < 0)
+                    return -1;
+            }
+
+            while (comparer.Compare(seq.data[prev], target) < 0)
+            {
+                prev--;
+                if (prev == Math.Max(step, 0))
+                    return -1;
+            }
+
+            if (comparer.Compare(seq.data[prev], target) == 0)
+                return prev;
+
+            return -1;
+        }
+
+        public static int BinarySearch<T>(Sequence<T> seq, T target, CountingComparer<T> comparer) where T : struct, IComparable<T>
         {
             int left = 0;
-            int right = array.Length - 1;
+            int right = seq.len - 1;
 
             while (left <= right)
             {
                 int mid = (left + right) / 2;
 
-                if (array[mid].Equals(target))
-                    return mid; // Возвращаем индекс найденного элемента
+                if (comparer.Compare(seq.data[mid], target) == 0)
+                    return mid; 
 
-                if (array[mid].CompareTo(target) < 0)
-                    left = mid + 1; // Перемещаем левую границу вправо
+                if (comparer.Compare(seq.data[mid], target) < 0)
+                    left = mid + 1; 
                 else
-                    right = mid - 1; // Перемещаем правую границу влево
+                    right = mid - 1;
             }
 
-            return -1; // Элемент не найден
+            return -1;
         }
     }
 }
